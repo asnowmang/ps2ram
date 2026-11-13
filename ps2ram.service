@@ -1,0 +1,12 @@
+[Unit]
+Description=Samba ISO cacher for PS2SMB
+After=smbd.service
+
+[Service]
+ExecStart=/usr/local/sbin/ps2ram
+Restart=on-failure
+Nice=10
+IOSchedulingClass=idle
+
+[Install]
+WantedBy=multi-user.target

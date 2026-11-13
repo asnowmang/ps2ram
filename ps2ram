@@ -1,0 +1,20 @@
+#!/bin/sh
+# Loads active Samba PS2 ISO to memory
+
+DIR="/Path/to/PS2/directory"
+
+warmed=
+while :; do
+    locks=$(smbstatus -L 2>/dev/null)
+    for f in "$DIR"/DVD/*.[iI][sS][oO] "$DIR"/CD/*.[iI][sS][oO]; do
+        name=${f##*/}
+        case $locks in
+            *"$name"*) ;;
+            *) continue ;;
+        esac
+        [ "$f" = "$warmed" ] && continue
+        warmed=$f
+        cat "$f" > /dev/null &
+    done
+    sleep 10
+done

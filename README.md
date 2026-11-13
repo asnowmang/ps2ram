@@ -3,3 +3,6 @@ PS2RAM monitors Samba for disk activity and reads the active disc image to memor
 
 ## Installation
 Edit ps2ram and change DIR to point to your PS2 folder. Specifically "PS2", not "PS2/DVD" or "PS2/CD". Then run ```# make```
+
+## Removal
+```# make uninstall```
